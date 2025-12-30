@@ -1,0 +1,20 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "dec-renta-schwab"
+version = "0.1.0"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "pandas>=2.3.3",
+    "requests>=2.32.5",
+    "typer>=0.21.0",
+]
+
+[project.scripts]
+renta-bolsa = "renta_bolsa.__main__:app"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/renta_bolsa"]
