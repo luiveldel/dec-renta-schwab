@@ -11,6 +11,11 @@ class DataInputs:
     realized_csv: Path
     year: int
 
+@dataclass(frozen=True)
+class Inputs720:
+    positions_csv: Path
+    year: int
+
 def infer_year_from_filename(path: Path) -> int:
     m = DATE_YYYY.search(path.name)
     if not m:
@@ -46,3 +51,19 @@ def resolve_inputs(
         inferred = year
 
     return DataInputs(tx, rg, inferred)
+
+def resolve_positions_inputs(
+    data_dir: str,
+    pattern_positions: str = "Individual-Positions*.csv",
+    year: int | None = None
+) -> Inputs720:
+    d = Path(data_dir)
+    pos = pick_single(list(d.glob(pattern_positions)), "positions (acciones)")
+
+    y_pos = infer_year_from_filename(pos)
+
+    inferred = y_pos
+    if year is not None:
+        inferred = year
+
+    return Inputs720(pos, inferred)

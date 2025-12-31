@@ -14,7 +14,7 @@ dependencies = [
 ]
 
 [project.scripts]
-renta-bolsa = "renta_bolsa.__main__:app"
+dec-renta = "dec_renta.__main__:app"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/renta_bolsa"]
+packages = ["src/common", "src/model_720", "src/dec_renta", "src/model_100"]

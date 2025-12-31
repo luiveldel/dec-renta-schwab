@@ -3,14 +3,17 @@ from __future__ import annotations
 from pathlib import Path
 import typer
 
-from renta_bolsa.modules.io import resolve_inputs
-from renta_bolsa.modules.report import build_reports
+from common.io import resolve_inputs
+from common.report import build_reports
 
-app = typer.Typer(name="Generador de informes de renta para bolsa extranjera (Schwab).")
+app = typer.Typer(
+    add_completion=False,
+    help="Generador de informes de renta para bolsa extranjera (Schwab)."
+)
 
 
-@app.command()
-def main(
+@app.command("run")
+def run(
     data_dir: Path = typer.Option(
         Path("data"),
         exists=True,
@@ -51,7 +54,3 @@ def main(
 
     typer.echo(resumen_path)
     typer.echo(desglose_path)
-
-
-if __name__ == "__main__":
-    app()

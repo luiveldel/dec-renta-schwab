@@ -52,6 +52,27 @@ Salida (por defecto):
 
 - out/resumen_anual_2025.csv
 - out/desglose_symbol_2025.csv
-- out/fx_usd_per_eur_2025.csv (caché)
+
 
 ## Modelo 720
+
+## Input
+
+A fecha 31 de diciembre del año en cuestión,
+Hay que extraer un único CSV de Schwab de la siguiente manera.
+
+<div align="center">
+
+![Modelo 720](img/720.png)
+
+</div>
+
+Dejamos el fichero de entrada en la carpeta data/.
+
+- data/Individual-Positions-2025-12-31-*.csv
+
+## Outpout
+
+Salida (por defecto):
+
+- out/modelo_720_2025.csv
