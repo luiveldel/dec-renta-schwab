@@ -64,7 +64,8 @@ Criterio de fechas:
 
 Si no hay fixing ese día (finde/festivo): usar el último disponible anterior (forward-fill al construir el calendario diario).
 
-BCE publica “USD por 1 EUR” por lo que $EUR = \dfrac{USD}{USD_{eur}}$
+BCE publica “USD por 1 EUR” por lo que
+$EUR = \dfrac{USD}{USD_{eur}}$
 
 [Source](https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html)
 
@@ -93,7 +94,7 @@ Dejamos los ficheros de entrada en la carpeta data/.
 - `data/Indiviual_XXX*\_Transactions_2025*.csv` (Dividendos)
 - `data/XXX*\_GainLoss_Realized_Details2025*.csv` (Ventas)
 
-## Outpout
+## Output
 
 Salida (por defecto):
 
@@ -123,6 +124,23 @@ Dejamos el fichero de entrada en la carpeta data/.
 Salida (por defecto):
 
 - `out/modelo_720_2025.csv`
+
+### Base local de tickers (Modelo 720)
+
+Para enriquecer el reporte con ISIN y domicilio fiscal, añade/edita:
+
+- `data/ticker_metadata.csv`
+
+Columnas esperadas:
+
+- `Ticker`, `ISIN`, `Domicilio Fiscal`, `Poblacion`, `Pais Dom Fiscal`
+
+Si un ticker no está en esta base, `ISIN`, `Domicilio Fiscal` y `Poblacion`
+se dejan en blanco. `Pais Dom Fiscal` usa `US` como valor por defecto.
+
+Cuando faltan datos, el reporte intenta completarlos con `yfinance` y guarda
+el resultado de vuelta en `data/ticker_metadata.csv` (requiere conexión).
+
 
 ## Disclaimer
 

@@ -18,6 +18,6 @@ def generate_report_720(
     year: int,
     out_dir: str,
     refresh_fx: bool = False,
-):
+) -> str:
     engine = TaxReportEngine(year=year, out_dir=out_dir, refresh_fx=refresh_fx)
     return engine.generate_report_720(positions_csv)
